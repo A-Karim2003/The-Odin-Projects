@@ -6,8 +6,10 @@ const displayPlayerChoice = document.querySelector(".display-player-choice  ");
 const displayComputerChoice = document.querySelector(
   ".display-computer-choice  "
 );
-const resultEl = document.querySelector(".result");
-resultEl.style.display = "none";
+const resultContainerEl = document.querySelector(".result");
+const resultEl = resultContainerEl.querySelector("h3");
+const playAgainBtn = document.getElementById("play-again");
+const popUp = document.querySelector(".popUp");
 
 let playerScore = 0;
 let computerScore = 0;
@@ -19,6 +21,9 @@ optionsContainer.addEventListener("click", (e) => {
   //? Get human choice
   const humanChoice = e.target.closest(".option");
   if (!humanChoice) return;
+
+  //? Remove pop up
+  popUp.style.display = "none";
 
   //? Display player choice image in the DOM
   renderPlayerChoice(humanChoice);
@@ -47,6 +52,11 @@ optionsContainer.addEventListener("click", (e) => {
     isPlaying = false;
     return;
   }
+});
+
+//? Prompt user to play again
+playAgainBtn.addEventListener("click", () => {
+  resetScores();
 });
 
 function getComputerChoice() {
@@ -85,8 +95,29 @@ function playRound(humanChoice, computerChoice) {
 }
 
 function displayResult(result) {
-  resultEl.style.display = "block";
-  const h3 = document.createElement("h3");
-  h3.textContent = result;
-  resultEl.append(h3);
+  resultEl.textContent = "";
+  resultEl.textContent = result;
+  resultContainerEl.classList.add("active");
+}
+
+function resetScores() {
+  //? Reset state back to normal
+  playerScore = 0;
+  computerScore = 0;
+  result = "";
+  isPlaying = true;
+
+  //? Revert scores text content back to 0
+  playerScoreEl.textContent = 0;
+  computerScoreEl.textContent = 0;
+
+  //? Remove emojis from screen
+  displayPlayerChoice.textContent = "";
+  displayComputerChoice.textContent = "";
+
+  //? Remove modal
+  resultContainerEl.classList.remove("active");
+
+  //? Add pop up
+  popUp.style.display = "block";
 }
