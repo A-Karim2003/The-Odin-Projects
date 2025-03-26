@@ -180,3 +180,15 @@ img {
     right: 2%;
   }
 }
+
+.result {
+  position: absolute;
+  z-index: 2;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%) skewX(-8deg);
+  border-radius: 20px;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0, 98, 255, 0.4);
+  background-color: rgba(1, 23, 39, 0.7);
+}
