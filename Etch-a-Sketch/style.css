@@ -4,6 +4,7 @@
 
 :root {
   --max-width: 1200px;
+  --border-color: black;
 }
 
 body {
@@ -106,7 +107,7 @@ input[type="range"] + label {
 /* Styles for track; chrome and safari */
 input[type="range"]::-webkit-slider-runnable-track {
   background-color: purple;
-  border-radius: 4px;
+  border-radius: 100px;
   height: 12px;
   cursor: pointer;
 }
@@ -154,12 +155,11 @@ input[type="range"]::-moz-range-thumb {
   border: solid 1px steelblue;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
     rgba(0, 0, 0, 0.22) 0px 15px 12px;
-  position: relative;
 }
 
 .container div {
-  transition: 0.5s ease;
-  border: solid black 1px;
+  transition: 0.3s ease;
+  border: solid var(--border-color) 1px;
 }
 
 @media (max-width: 1280px) {
@@ -193,11 +193,6 @@ input[type="range"]::-moz-range-thumb {
 }
 
 button {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: -60px;
-
   box-shadow: 3px 4px 0px 0px #899599;
   background: linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
   background-color: #ededed;
