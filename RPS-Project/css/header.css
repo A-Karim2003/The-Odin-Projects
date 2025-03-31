@@ -8,6 +8,10 @@ header {
   position: relative;
 }
 
+header h1 {
+  line-height: 40px;
+}
+
 @property --angle {
   syntax: "<angle>";
   initial-value: 0deg;

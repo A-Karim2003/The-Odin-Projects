@@ -70,10 +70,6 @@ section.computer {
   transition: all 0.3s ease;
 }
 
-/* .options-container > div img {
-  width: 200px;
-} */
-
 img {
   width: 200px;
 }
@@ -108,50 +104,6 @@ img {
   padding: 2rem;
 }
 
-@media (max-width: 1370px) {
-  .player-score {
-    left: 0;
-    padding: 1rem;
-  }
-
-  .computer-score {
-    right: 0;
-    padding: 1rem;
-  }
-
-  .score h2 {
-    font-size: 1.15rem;
-  }
-
-  .options-container {
-    position: absolute;
-    top: 80%;
-    left: 50%;
-    border-radius: 20px;
-    transform: translate(-50%, -50%) skewX(-8deg);
-    padding: 1rem;
-    display: flex;
-    gap: 0;
-    box-shadow: 0 0 10px rgba(0, 98, 255, 0.4);
-  }
-
-  /* .options-container > div img {
-    width: 150px;
-  } */
-
-  img {
-    width: 150px;
-  }
-
-  .display-player-choice {
-    left: 0;
-  }
-
-  .display-computer-choice {
-    right: 0;
-  }
-}
-
 .display-choice {
   position: absolute;
   z-index: 1;
@@ -167,18 +119,6 @@ img {
 .display-computer-choice {
   transform: translateY(-50%);
   right: 25%;
-}
-
-@media (max-width: 1000px) {
-  .display-player-choice {
-    transform: translateY(-50%);
-    left: 2%;
-  }
-
-  .display-computer-choice {
-    transform: translateY(-50%);
-    right: 2%;
-  }
 }
 
 .result {
@@ -231,4 +171,73 @@ img {
 .popUp {
   letter-spacing: 2px;
   font-size: 1.2rem;
+}
+/* Media query for different screen sizes */
+
+@media (max-width: 560px), (max-width: 700px) {
+  .options-container {
+    padding: 0;
+  }
+  .options-container img {
+    max-width: 80px;
+  }
+}
+
+@media (max-height: 1000px) {
+  .options-container {
+    top: 73%;
+    padding: 1rem;
+    gap: 3px;
+  }
+}
+
+@media (max-height: 1000px) and (max-width: 680px) {
+  .options-container {
+    top: 72%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .display-player-choice {
+    transform: translateY(-50%);
+    left: 2%;
+  }
+
+  .display-computer-choice {
+    transform: translateY(-50%);
+    right: 2%;
+  }
+}
+
+@media (max-width: 1370px) {
+  .player-score {
+    left: 0;
+    padding: 1rem;
+  }
+
+  .computer-score {
+    right: 0;
+    padding: 1rem;
+  }
+
+  .score h2 {
+    font-size: 1.15rem;
+  }
+
+  .options-container {
+    border-radius: 20px;
+    padding: 1rem;
+  }
+
+  img {
+    width: 150px;
+  }
+
+  .display-player-choice {
+    left: 0;
+  }
+
+  .display-computer-choice {
+    right: 0;
+  }
 }
