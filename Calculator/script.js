@@ -4,7 +4,6 @@ const resultEl = document.querySelector(".display-result");
 const calculationEl = document.querySelector(".display-calculation");
 const deleteEl = document.getElementById("delete");
 const clear = document.getElementById("clear");
-// const equalBtn = document.querySelector(".equal");
 const numbersEl = document.querySelectorAll(".numbers");
 const operatorsEl = document.querySelectorAll(".operator");
 const accessibilitiesEl = document.querySelectorAll(".accessibility");
@@ -42,13 +41,24 @@ buttonsContainerEl.addEventListener("click", (e) => {
   }
 
   //? Handle clicks for the operators
+  //! Complete this
   if (
     buttons.classList.contains("operator") &&
     !buttons.classList.contains("equal")
   ) {
-    operator = buttons.textContent;
-    const length = resultEl.textContent.trim().length;
+    iscalculating = true;
 
+    //? If user clicks operator after calculation instead of equals
+    const [number1, number2] = getNumbers();
+
+    const result = operate(number1, operator, number2);
+    if (result) {
+      displayResults(number1, number2);
+    }
+    operator = buttons.textContent;
+
+    //* Ensures no duplicate operators
+    const length = resultEl.textContent.trim().length;
     if (!operators.includes(resultEl.textContent.trim()[length - 1]))
       resultEl.append(buttons.textContent.trim());
   }
@@ -59,13 +69,16 @@ buttonsContainerEl.addEventListener("click", (e) => {
   const equalBtn = buttons.closest(".equal");
   if (e.target === equalBtn) {
     iscalculating = false;
-    const [number1, number2] = resultEl.textContent
-      .trim()
-      .split(/[+\-x÷=]/)
-      .filter((e) => e !== "");
-    displayResults(number1, number2);
+    const [number1, number2] = getNumbers();
   }
 });
+
+function getNumbers() {
+  return resultEl.textContent
+    .trim()
+    .split(/[+\-x÷=]/)
+    .filter((e) => e !== "");
+}
 
 function operate(number1, operator, number2) {
   const isValid = validateInput(number1, operator, number2);
@@ -95,6 +108,13 @@ function displayResults(number1, number2) {
   resultEl.textContent = "";
   const result = operate(number1, operator, number2);
   resultEl.textContent = result;
+}
+
+function furtherCalculation(number1, operator, number2) {
+  const isValid = validateInput(number1, operator, number2);
+  if (!isValid) return;
+
+  console.log(number1, operator, number2);
 }
 
 function validateInput(number1, operator, number2) {
