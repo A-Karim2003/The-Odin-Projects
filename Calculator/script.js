@@ -70,6 +70,7 @@ buttonsContainerEl.addEventListener("click", (e) => {
   if (e.target === equalBtn) {
     iscalculating = false;
     const [number1, number2] = getNumbers();
+    displayResults(number1, number2);
   }
 });
 
