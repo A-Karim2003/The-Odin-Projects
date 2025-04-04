@@ -13,9 +13,11 @@ buttonsContainerEl.addEventListener("click", (e) => {
   if (!buttons) return;
 
   //? If the first char entered is an operator, ignore
-
-  if (resultEl.textContent === "" && e.target.classList.contains("operator")) {
-    console.log("errrr");
+  if (
+    resultEl.textContent.trim() === "" &&
+    e.target.classList.contains("operator")
+  ) {
+    return;
   }
 
   //* Handles the logic for displaying text
@@ -30,18 +32,10 @@ buttonsContainerEl.addEventListener("click", (e) => {
   }
 
   //? Handle clicks for the delete button
-  if (buttons.closest("#delete")) {
-    //* Takes the text content removes 1 element and adds it back
-    const displayText = resultEl.textContent.trim();
-    resultEl.textContent = displayText.slice(0, -1);
-    calculationEl.textContent = "";
-  }
+  deleteContent(buttons);
 
   //? Handle clicks for the clear button
-  if (buttons.closest("#clear")) {
-    resultEl.textContent = "";
-    calculationEl.textContent = "";
-  }
+  clear(buttons);
 
   //? Handle clicks for the operators
   if (
@@ -54,8 +48,10 @@ buttonsContainerEl.addEventListener("click", (e) => {
     const [number1, number2] = getNumbers();
 
     operator = buttons.textContent;
+    console.log(operator);
 
     const result = operate(number1, operator, number2);
+
     if (result) {
       displayResults(number1, number2);
     }
@@ -76,6 +72,21 @@ buttonsContainerEl.addEventListener("click", (e) => {
     displayResults(number1, number2);
   }
 });
+function clear(buttons) {
+  if (buttons.closest("#clear")) {
+    resultEl.textContent = "";
+    calculationEl.textContent = "";
+  }
+}
+
+function deleteContent(buttons) {
+  if (buttons.closest("#delete")) {
+    //* Takes the text content removes 1 element and adds it back
+    const displayText = resultEl.textContent.trim();
+    resultEl.textContent = displayText.slice(0, -1);
+    calculationEl.textContent = "";
+  }
+}
 
 function getNumbers() {
   return resultEl.textContent
@@ -117,13 +128,6 @@ function displayResults(number1, number2) {
   resultEl.textContent = "";
   const result = operate(number1, operator, number2);
   resultEl.textContent = result;
-}
-
-function furtherCalculation(number1, operator, number2) {
-  const isValid = validateInput(number1, operator, number2);
-  if (!isValid) return;
-
-  console.log(number1, operator, number2);
 }
 
 function validateInput(number1, operator, number2) {
