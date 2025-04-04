@@ -2,25 +2,20 @@
 
 const resultEl = document.querySelector(".display-result");
 const calculationEl = document.querySelector(".display-calculation");
-const deleteEl = document.getElementById("delete");
-const clear = document.getElementById("clear");
-const numbersEl = document.querySelectorAll(".numbers");
-const operatorsEl = document.querySelectorAll(".operator");
-const accessibilitiesEl = document.querySelectorAll(".accessibility");
 const buttonsContainerEl = document.querySelector(".buttons");
 
 const operators = ["+", "-", "÷", "x", "%"];
-
 let operator;
 let iscalculating = true;
+
 buttonsContainerEl.addEventListener("click", (e) => {
   const buttons = e.target.closest("button");
   if (!buttons) return;
 
   //? If the first char entered is an operator, ignore
 
-  if (operators.includes(resultEl.textContent.trim()[0])) {
-    console.log("umm no..");
+  if (resultEl.textContent === "" && e.target.classList.contains("operator")) {
+    console.log("errrr");
   }
 
   //* Handles the logic for displaying text
