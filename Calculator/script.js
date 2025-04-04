@@ -9,13 +9,19 @@ const operatorsEl = document.querySelectorAll(".operator");
 const accessibilitiesEl = document.querySelectorAll(".accessibility");
 const buttonsContainerEl = document.querySelector(".buttons");
 
-const operators = ["+", "-", "÷", "x"];
+const operators = ["+", "-", "÷", "x", "%"];
 
 let operator;
 let iscalculating = true;
 buttonsContainerEl.addEventListener("click", (e) => {
   const buttons = e.target.closest("button");
   if (!buttons) return;
+
+  //? If the first char entered is an operator, ignore
+
+  if (operators.includes(resultEl.textContent.trim()[0])) {
+    console.log("umm no..");
+  }
 
   //* Handles the logic for displaying text
   //? handle clicks for numbers
@@ -30,8 +36,10 @@ buttonsContainerEl.addEventListener("click", (e) => {
 
   //? Handle clicks for the delete button
   if (buttons.closest("#delete")) {
+    //* Takes the text content removes 1 element and adds it back
     const displayText = resultEl.textContent.trim();
     resultEl.textContent = displayText.slice(0, -1);
+    calculationEl.textContent = "";
   }
 
   //? Handle clicks for the clear button
@@ -41,7 +49,6 @@ buttonsContainerEl.addEventListener("click", (e) => {
   }
 
   //? Handle clicks for the operators
-  //! Complete this
   if (
     buttons.classList.contains("operator") &&
     !buttons.classList.contains("equal")
@@ -51,11 +58,12 @@ buttonsContainerEl.addEventListener("click", (e) => {
     //? If user clicks operator after calculation instead of equals
     const [number1, number2] = getNumbers();
 
+    operator = buttons.textContent;
+
     const result = operate(number1, operator, number2);
     if (result) {
       displayResults(number1, number2);
     }
-    operator = buttons.textContent;
 
     //* Ensures no duplicate operators
     const length = resultEl.textContent.trim().length;
@@ -77,7 +85,7 @@ buttonsContainerEl.addEventListener("click", (e) => {
 function getNumbers() {
   return resultEl.textContent
     .trim()
-    .split(/[+\-x÷=]/)
+    .split(/[+\-x÷=%]/)
     .filter((e) => e !== "");
 }
 
@@ -88,6 +96,9 @@ function operate(number1, operator, number2) {
   number1 = parseFloat(number1);
   number2 = parseFloat(number2);
 
+  //? Check for 0 divisions
+  if (number2 === 0 && operator === "÷") return "This is tomfoolery";
+
   switch (operator) {
     case "+":
       return sum(number1, number2);
@@ -97,6 +108,8 @@ function operate(number1, operator, number2) {
       return multiply(number1, number2);
     case "÷":
       return divide(number1, number2);
+    case "%":
+      return remainder(number1, number2);
     default:
       return "Error with input. Try again!";
   }
@@ -137,4 +150,8 @@ function multiply(number1, number2) {
 
 function divide(number1, number2) {
   return number1 / number2;
+}
+
+function remainder(number1, number2) {
+  return number1 % number2;
 }
