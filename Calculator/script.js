@@ -46,20 +46,24 @@ buttonsContainerEl.addEventListener("click", (e) => {
 
     //? If user clicks operator after calculation instead of equals
     const [number1, number2] = getNumbers();
-
-    operator = buttons.textContent;
-    console.log(operator);
+    operator = buttons.textContent.trim();
 
     const result = operate(number1, operator, number2);
-
     if (result) {
       displayResults(number1, number2);
     }
 
     //* Ensures no duplicate operators
-    const length = resultEl.textContent.trim().length;
-    if (!operators.includes(resultEl.textContent.trim()[length - 1]))
-      resultEl.append(buttons.textContent.trim());
+    const text = resultEl.textContent.trim();
+    const length = text.length;
+
+    if (operators.includes(text[length - 1])) {
+      // If last character is an operator → replace it
+      resultEl.textContent = text.slice(0, -1) + operator;
+    } else {
+      // Otherwise just add the operator
+      resultEl.append(operator);
+    }
   }
 
   //* Now handle the logic for operations
@@ -127,7 +131,8 @@ function displayResults(number1, number2) {
   calculationEl.textContent = resultEl.textContent.trim();
   resultEl.textContent = "";
   const result = operate(number1, operator, number2);
-  resultEl.textContent = result;
+  const formattedResult = formatResult(result);
+  resultEl.textContent = formattedResult;
 }
 
 function validateInput(number1, operator, number2) {
@@ -153,4 +158,13 @@ function divide(number1, number2) {
 
 function remainder(number1, number2) {
   return number1 % number2;
+}
+
+function isFloat(result) {
+  return result % 1 !== 0;
+}
+
+function formatResult(result) {
+  if (isFloat(result)) return Number(result.toFixed(3));
+  return Number(result);
 }
