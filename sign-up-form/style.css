@@ -30,12 +30,79 @@ aside {
 aside div {
   position: absolute;
   top: 33%;
-  max-width: 100%;
+  width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
+  color: white;
+  font-family: "Norse", sans-serif;
+  font-size: 38px;
 }
 
 aside div img {
+  width: 100px;
+}
+
+/* Styles for the right side */
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+
+header {
+  letter-spacing: 2px;
+  line-height: 24px;
+  padding: 8px;
+}
+
+.form-section {
+  box-shadow: 2px 2px 10px;
+  padding: 1rem;
+}
+
+form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  max-width: 1000px;
+}
+
+form .input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 18px;
+}
+
+form .input-container input {
+  padding: 0.5rem;
+  font-size: 16px;
+  border: solid #e5e7eb 2px;
+  border-radius: 4px;
+}
+
+input:invalid {
+  border: solid red 2px;
+}
+
+input:focus {
+  outline: solid rgb(11, 133, 255) 1px;
+}
+
+.submit {
+  background-color: #596d48;
+  color: white;
+  padding: 0.4rem 0;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+}
+
+.input-container:last-of-type {
+  grid-column: span 2;
+  text-align: center;
+  gap: 20px;
 }

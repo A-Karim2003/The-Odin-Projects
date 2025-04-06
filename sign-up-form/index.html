@@ -24,53 +24,57 @@
         </header>
         <section class="form-section">
             <form action="/">
-                <div>
+                <div class="input-container">
                     <label for="first_name">
                         First Name
                     </label>
                     <input type="text" name="first_name" id="first_name" required>
                 </div>
 
-                <div>
+                <div class="input-container">
                     <label for="last_name">
                         Last Name
                     </label>
                     <input type="text" name="last_name" id="last_name" required>
                 </div>
 
-                <div>
+                <div class="input-container">
                     <label for="email">
                         Email
                     </label>
-                    <input type="email" name="email" id="email" required>
+                    <input type="email" name="email" id="email" required placeholder="example@gmail.com">
                 </div>
 
-                <div>
+                <div class="input-container">
                     <label for="number">
                         Number
                     </label>
                     <input type="tel" name="number" id="number" required>
                 </div>
 
-                <div>
+                <div class="input-container">
                     <label for="password">
                         Password
                     </label>
                     <input type="password" name="password" id="password" required>
                 </div>
 
-                <div>
-                    <label for=required"password">
+                <div class="input-container">
+                    <label for="confirm-password" password">
                         Confirm Password
                     </label>
-                    <input type="password" name="password" id="password required">
+                    <input type="password" name="confirm-password" id="confirm-password" required minlength="8">
                 </div>
 
-                <button type="submit">
-                    Creat Account
-                </button>
+                <div class="input-container">
+                    <button class="submit" type="submit">
+                        Creat Account
+                    </button>
+                    <p>Already have an account? Log in</p>
+
+                </div>
+
             </form>
-            <p>Already have an account? Log in</p>
         </section>
 </body>
 
