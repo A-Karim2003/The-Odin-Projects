@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  /* default styles */
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+
+  /* Layout styles */
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: 1fr 5fr;
+  grid-template-areas:
+    "sidebar header "
+    "sidebar main";
+}
+
+aside {
+  grid-area: sidebar;
+  background-color: #1992d4;
+}
+
+header {
+  grid-area: header;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+main {
+  grid-area: main;
+  background-color: #e2e8f0;
+}
