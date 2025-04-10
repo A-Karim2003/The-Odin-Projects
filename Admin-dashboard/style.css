@@ -1,6 +1,13 @@
 * {
   box-sizing: border-box;
 }
+nav,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
 
 body {
   /* default styles */
@@ -18,16 +25,177 @@ body {
     "sidebar header "
     "sidebar main";
 }
+/*=========== Styles for the Sidebar=========== */
 
 aside {
   grid-area: sidebar;
   background-color: #1992d4;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 2rem;
+  color: white;
+  padding: 1rem;
 }
 
+aside .logo-container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  align-items: center;
+  justify-content: center;
+}
+
+aside nav {
+  display: grid;
+  grid-template-rows:
+    [primary] auto
+    [secondary] auto
+    [spacer] 1fr;
+
+  gap: 4rem;
+  padding: 4px;
+}
+aside nav ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+li p {
+  margin: 0;
+}
+i {
+  display: inline-block;
+  width: 33px;
+  text-align: start;
+  padding: 0;
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.primary-nav li,
+.secondary-nav li {
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+.primary-nav li:hover,
+.secondary-nav li:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.primary-nav li:active,
+.secondary-nav li:active {
+  transform: scale(0.98);
+}
+
+/*=========== Styles for the Header=========== */
 header {
   grid-area: header;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  display: grid;
+  grid-template-rows: auto auto;
 }
+
+/* Top half */
+
+header .top-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.top-header .search-bar {
+  padding: 0 10px;
+  flex: 1;
+  max-width: 800px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: 40px;
+}
+
+.top-header .search-bar input {
+  height: 100%;
+  flex: 1;
+  border-radius: 20px;
+  background-color: #e2e8f0;
+  border: none;
+  font-size: 18px;
+  padding: 0 2rem;
+}
+
+.top-header .accessibilities {
+  flex: 1;
+  max-width: 400px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.top-header .accessibility i {
+  font-size: 1.4rem;
+}
+
+/* Bottom half */
+
+header .bottom-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.greet-user {
+  flex: 1;
+  max-width: 800px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: 40px;
+}
+
+.greet-user div * {
+  margin: 6px;
+}
+
+.greet-user div h3 {
+  font-size: 1.8rem;
+}
+
+.action-bar {
+  flex: 1;
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.action-bar button {
+  background-color: #1992d4;
+  color: white;
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+}
+.action-bar button:hover {
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.4);
+  background-color: white;
+  color: #1992d4;
+}
+.action-bar button:active {
+  transform: scale(0.98);
+}
+
+/*=========== Styles for the article=========== */
 
 main {
   grid-area: main;

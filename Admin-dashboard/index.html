@@ -16,12 +16,15 @@
 <body>
     <aside>
         <div class="logo-container">
-            <img src="./img/view-dashboard.svg" height="80">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="60" viewBox="0 0 24 24" fill="white">
+                <path d="M13,3V9H21V3M13,21H21V11H13M3,21H11V15H3M3,13H11V3H3V13Z" />
+            </svg>
+
             <h1>Dashboard</h1>
         </div>
 
         <nav>
-            <ul>
+            <ul class="primary-nav">
                 <li>
                     <i class="fas fa-house"></i> Home
                 </li>
@@ -42,7 +45,7 @@
                 </li>
             </ul>
 
-            <ul>
+            <ul class="secondary-nav">
                 <li>
                     <i class="fas fa-gear"></i> Settings
                 </li>
@@ -64,21 +67,19 @@
                 <input type="text">
             </div>
 
-            <div class="accessibility">
+            <div class="accessibilities">
                 <i class="fas fa-bell"></i>
                 <img src="./img/face-man.svg" height="50">
-                <p class="user-name">Morgan Oakley</p>
+                <h3 class="user-name">Morgan Oakley</>
             </div>
         </div>
         <!-- bottom half of header -->
         <div class="bottom-header">
             <div class="greet-user">
+                <img src="./img/face-man.svg" height="60">
                 <div>
-                    <img src="./img/face-man.svg" height="50">
-                    <div>
-                        <p>Hi there,</p>
-                        <h3>Morgan Oakley (@morgan)</h3>
-                    </div>
+                    <p>Hi there,</p>
+                    <h3>Morgan Oakley (@morgan)</h3>
                 </div>
             </div>
 
@@ -87,6 +88,8 @@
                 <button>Upload</button>
                 <button>Share</button>
             </div>
+
+        </div>
     </header>
 
     <main>
