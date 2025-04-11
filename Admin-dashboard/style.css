@@ -100,11 +100,15 @@ header {
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
   display: grid;
   grid-template-rows: auto auto;
+  padding: 16px;
+  padding-top: 4px;
 }
 
 /* Top half */
 
 header .top-header {
+  padding: 0;
+  margin: 0;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -138,9 +142,6 @@ header .top-header {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-}
-.top-header .accessibility i {
-  font-size: 1.4rem;
 }
 
 /* Bottom half */
@@ -195,9 +196,25 @@ header .bottom-header {
   transform: scale(0.98);
 }
 
+@media ((max-width: 1130px) and (max-height: 1188px)) {
+  header .top-header,
+  header .bottom-header {
+    padding: 16px;
+    gap: 0.5rem;
+  }
+
+  .greet-user div h3 {
+    font-size: 1.4rem;
+  }
+}
+
 /*=========== Styles for the article=========== */
 
 main {
   grid-area: main;
   background-color: #e2e8f0;
+}
+
+.card {
+  background-color: white;
 }
