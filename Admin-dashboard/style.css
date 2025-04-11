@@ -213,8 +213,56 @@ header .bottom-header {
 main {
   grid-area: main;
   background-color: #e2e8f0;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: auto;
 }
 
-.card {
+main > * {
+  border: solid blue 2px;
+  align-self: start;
+}
+
+.article {
+  display: grid;
+  padding: 2rem;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-auto-rows: 300px;
+}
+
+.card,
+.announcements-container {
   background-color: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.card .card-title {
+  margin-bottom: 0;
+}
+
+.card p {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 22px;
+  letter-spacing: 1px;
+}
+.card .card-icons {
+  align-self: end;
+}
+
+/*=============Styles for the Notifications=========*/
+
+.notifications-section {
+  display: grid;
+  display: grid;
+  padding: 2rem;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-auto-rows: 300px;
 }
