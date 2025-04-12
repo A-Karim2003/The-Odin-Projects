@@ -216,6 +216,7 @@ main {
   display: grid;
   grid-template-columns: 3fr 1fr;
   grid-auto-rows: auto;
+  padding: 1rem;
 }
 @media (max-width: 1200px) {
   main {
@@ -240,13 +241,11 @@ main {
   row-gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   grid-auto-rows: 340px;
-  justify-content: space-between;
-
-  border: solid red 5px;
 }
 
 .card,
-.announcements-container {
+.announcements-container,
+.trending-container {
   background-color: white;
   padding: 1rem;
   border-radius: 1rem;
@@ -273,12 +272,39 @@ main {
 /*=============Styles for the Notifications=========*/
 
 .notifications-section {
-  border: solid red 5px;
   display: grid;
+  grid-template-rows: auto 1fr;
 }
 
 @media (max-width: 1440px) {
   .notifications-section {
     align-self: start;
   }
+}
+
+/*=============Styles for the Trendind=========*/
+
+.trending-container article {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.trending-container article img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.trending-container article div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.trending-container article div * {
+  margin: 4px;
+  margin-left: 10px;
 }
