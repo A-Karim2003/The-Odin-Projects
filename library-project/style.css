@@ -47,7 +47,7 @@ button.add-book-btn {
   padding: 0 2.5rem;
   text-align: center;
   text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
-  transition: all 0.5s;
+  transition: all 0.2s;
 }
 
 nav button:hover {
@@ -205,4 +205,8 @@ form div input {
 form .add-book-btn {
   width: 100%;
   margin-top: 20px;
+}
+
+form .add-book-btn:active {
+  transform: scale(0.98);
 }
