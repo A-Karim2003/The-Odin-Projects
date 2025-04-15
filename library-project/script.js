@@ -30,10 +30,7 @@ form.addEventListener("submit", (e) => {
 
     if (element.type === "file") {
       const file = element.files[0];
-      const file2 = element.files;
-      console.log(file);
-      console.log(file2);
-
+      //creates a temporary URL for it so it can be displayed
       value = file ? URL.createObjectURL(file) : "";
     } else {
       value = element.value.trim();
@@ -41,9 +38,15 @@ form.addEventListener("submit", (e) => {
     acc[element.id] = value;
     return acc;
   }, {});
-  // console.log(data);
+  clearInputFields();
 
-  addBookToLibrary(data[0], data[1], data[2], data[3], data[4]);
+  addBookToLibrary(
+    data.title,
+    data.author,
+    data.pages,
+    data["book-cover"],
+    data["read-status"]
+  );
 });
 
 function Book(title, author, pages, cover, read) {
@@ -80,5 +83,11 @@ function insertIntoDom(library) {
       </tr>
     `;
     bookShelf.insertAdjacentHTML("beforeend", bookRowHTML);
+  });
+}
+
+function clearInputFields() {
+  Array.from(formInputsEl).forEach((input) => {
+    input.value = "";
   });
 }

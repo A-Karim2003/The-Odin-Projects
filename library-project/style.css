@@ -20,7 +20,7 @@ body {
 }
 
 header {
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 2px 2px 15px rgba(100, 0, 255);
   padding: 1rem;
   margin-bottom: 2rem;
 }
