@@ -14,7 +14,7 @@
         <nav class="container">
             <h1 class="logo">My Library</h1>
 
-            <button class="add-book-btn">ADD BOOK</button>
+            <button class="add-book-btn" id="add-book-btn">ADD BOOK</button>
         </nav>
     </header>
 
@@ -27,21 +27,56 @@
                     <th>Title</th>
                     <th>Author</th>
                     <th>Pages</th>
-                    <th>ID</th>
+                    <th>Cover</th>
                     <th>Status</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Harry Potter</td>
-                    <td>J.K. Rowling</td>
-                    <td>300</td>
-                    <td>1</td>
-                    <td><button>Read</button></td>
-                </tr>
+                <!-- <tr>
+                    <td>Me</td>
+                    <td>J.K. Bowling</td>
+                    <td>600</td>
+                    <td><img src="" alt="Cover image"></td>
+                    <td><button class="toggle-read-btn read">Read</button></td>
+                </tr> -->
             </tbody>
         </table>
     </main>
+
+    <div class="modal">
+        <form>
+            <div>
+                <label for="title">Title</label>
+                <input type="text" id="title">
+            </div>
+
+            <div>
+                <label for="author">Author</label>
+                <input type="text" id="author">
+            </div>
+
+
+            <div>
+                <label for="pages">Pages</label>
+                <input type="number" id="pages">
+            </div>
+
+            <div>
+                <label for="book-cover">Pages</label>
+                <input type="file" id="book-cover" accept="image/*">
+            </div>
+
+            <div>
+                <label for="readStatus">Read Status</label>
+                <select name="readStatus" id="read-status">
+                    <option value="not-read">Not read</option>
+                    <option value="read">Read</option>
+                </select>
+            </div>
+            <button type="submit" class="add-book-btn" id="form-submit-btn">ADD BOOK</button>
+        </form>
+
+    </div>
 
 </body>
 

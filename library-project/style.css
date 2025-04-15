@@ -12,6 +12,7 @@
 }
 
 body {
+  font-family: "Roboto";
   width: 100%;
   height: 100vh;
   background-color: var(--bg-color);
@@ -27,7 +28,7 @@ nav.container {
   display: flex;
   justify-content: space-between;
 }
-nav button {
+button.add-book-btn {
   background-image: linear-gradient(
     92.88deg,
     #455eb5 9.16%,
@@ -39,13 +40,11 @@ nav button {
   box-sizing: border-box;
   color: #ffffff;
   cursor: pointer;
-  font-family: "Inter UI", "SF Pro Display", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: inherit;
   font-size: 16px;
   font-weight: 500;
   height: 4rem;
-  padding: 0 1.6rem;
+  padding: 0 2.5rem;
   text-align: center;
   text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
   transition: all 0.5s;
@@ -75,19 +74,135 @@ nav button:hover {
 }
 
 main {
-  border: solid 1px #333;
   padding: 2rem;
 }
 
 .book-table {
-  /* border-collapse: collapse; */
+  border-collapse: collapse;
   width: 100%;
   margin: 20px 0;
   font-family: sans-serif;
   font-size: 16px;
 }
 .book-table thead {
-  background-color: #333;
+  background-image: linear-gradient(
+    92.88deg,
+    #455eb5 9.16%,
+    #5643cc 43.89%,
+    #673fd7 64.72%
+  );
   color: white;
-  padding: ;
+}
+
+.book-table th {
+  padding: 12px;
+  text-align: left;
+  font-size: 1.6rem;
+}
+
+.book-table td {
+  padding: 12px;
+  border-bottom: solid 1px #333;
+  font-size: 1.2rem;
+}
+
+.book-table tbody tr:hover {
+  background-color: rgba(100, 0, 255, 0.1);
+}
+
+.book-table .toggle-read-btn {
+  padding: 0.5rem 0rem;
+  width: 100px;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: transparent;
+  border: solid 1px purple;
+  color: white;
+  font-size: 16px;
+}
+
+.book-table .toggle-read-btn:hover {
+  background-color: rgba(236, 9, 236, 0.2);
+}
+
+.book-table .toggle-read-btn.read {
+  background-color: purple;
+}
+
+/* Styles for the book cover */
+tr img {
+  border: solid red 2px;
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+/* Styles for the Modal */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(23, 1, 31, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  display: none;
+}
+
+.modal.active {
+  display: flex;
+}
+
+form {
+  background-color: #011727;
+  padding: 2rem 1rem;
+  border-radius: 10px;
+}
+
+form div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: solid 1px rgba(102, 0, 255, 0.7);
+  margin-bottom: 12px;
+}
+form div label {
+  min-width: 90px;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+form div input {
+  font-size: 1rem;
+  padding: 0.4rem;
+  flex: 1;
+  border-radius: 5px;
+  border: none;
+}
+
+#book-cover {
+  padding: 0.5rem 1rem;
+  background: rgba(102, 0, 255);
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+#read-status {
+  padding: 0.5rem 1rem;
+  background: rgba(102, 0, 255);
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+}
+
+form .add-book-btn {
+  width: 100%;
+  margin-top: 20px;
 }
