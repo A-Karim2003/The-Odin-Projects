@@ -47,6 +47,8 @@ form.addEventListener("submit", (e) => {
     data["book-cover"],
     data["read-status"]
   );
+
+  modal.classList.remove("active");
 });
 
 function Book(title, author, pages, cover, read) {
@@ -87,7 +89,27 @@ function insertIntoDom(library) {
 }
 
 function clearInputFields() {
-  Array.from(formInputsEl).forEach((input) => {
+  inputs.forEach((input) => {
     input.value = "";
   });
 }
+
+//Function checks if there are no books,
+
+function isLibraryEmpty() {
+  if (myLibrary.length !== 0) return;
+
+  const html = `
+   <tr>
+    <td colspan="5">
+        <div class="empty-alert">
+            <h2>📚 Your library is empty 📚</h2>
+            <p>Start adding books to build your collection!</p>
+        </div>
+    </td>
+  </tr>
+  `;
+
+  bookShelf.insertAdjacentHTML("beforeend", html);
+}
+isLibraryEmpty();

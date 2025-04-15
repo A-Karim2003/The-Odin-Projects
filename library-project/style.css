@@ -20,7 +20,7 @@ body {
 }
 
 header {
-  box-shadow: 2px 2px 15px rgba(100, 0, 255);
+  box-shadow: 1px 1px 15px rgba(100, 0, 255);
   padding: 1rem;
   margin-bottom: 2rem;
 }
@@ -101,7 +101,7 @@ main {
 }
 
 .book-table td {
-  padding: 12px;
+  padding: 12px 0;
   border-bottom: solid 1px #333;
   font-size: 1.2rem;
 }
@@ -131,7 +131,6 @@ main {
 
 /* Styles for the book cover */
 tr img {
-  border: solid red 2px;
   height: 80px;
   width: 80px;
   object-fit: cover;
@@ -209,4 +208,28 @@ form .add-book-btn {
 
 form .add-book-btn:active {
   transform: scale(0.98);
+}
+
+.empty-alert {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background-color: #5543ccc3;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.empty-alert h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #2d2d2d;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.empty-alert p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
 }
