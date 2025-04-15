@@ -6,6 +6,7 @@ const inputs = document.querySelectorAll("input");
 const addBookBtn = document.getElementById("add-book-btn");
 const form = document.querySelector("form");
 const formInputsEl = document.querySelectorAll(".form-elements");
+
 /*======================================================*/
 const myLibrary = [];
 //? Add functionality for handling modal
@@ -32,6 +33,8 @@ form.addEventListener("submit", (e) => {
       const file = element.files[0];
       //creates a temporary URL for it so it can be displayed
       value = file ? URL.createObjectURL(file) : "";
+    } else if (element.type === "select-one") {
+      value = element.value.trim() === "read" ? true : false;
     } else {
       value = element.value.trim();
     }
@@ -70,6 +73,7 @@ function insertIntoDom(library) {
   bookShelf.textContent = "";
   library.forEach((book) => {
     const { title, author, pages, cover, read } = book;
+    console.log(title, author, pages, cover, read);
 
     const bookRowHTML = `
       <tr>
@@ -78,7 +82,7 @@ function insertIntoDom(library) {
           <td>${pages}</td>
           <td><img src="${cover}" alt="Cover image"></td>
           <td>
-            <button class="toggle-read-btn read">
+            <button class="toggle-read-btn ${read ? "read" : ""}">
             ${read ? "Read" : "Not read"}
             </button>
           </td>
