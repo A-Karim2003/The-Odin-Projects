@@ -7,8 +7,8 @@ const addBookBtn = document.getElementById("add-book-btn");
 const form = document.querySelector("form");
 const formInputsEl = document.querySelectorAll(".form-elements");
 
-/*======================================================*/
 const myLibrary = [];
+/*======================================================*/
 //? Add functionality for handling modal
 document.body.addEventListener("click", (e) => {
   //* Activates modal once button is clicked
@@ -23,6 +23,7 @@ document.body.addEventListener("click", (e) => {
 });
 /*======================================================*/
 
+//? Add functionality for retrieving and deplaying form data
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -54,6 +55,35 @@ form.addEventListener("submit", (e) => {
   modal.classList.remove("active");
 });
 
+/*======================================================*/
+//? Add functionality for changing read state
+/* Psuedo:
+1. User clicks button,
+2. change button state from the book library:
+    1. Get the ID of the clicked button's row✅
+    2. filter book library to target the object based on ID✅
+    3. change the read status. (read = !read)✅
+3. Find a way to update the DOM😁
+*/
+
+bookShelf.addEventListener("click", (e) => {
+  const statusBtn = e.target.closest(".toggle-read-btn");
+  if (!statusBtn) return;
+
+  //? target row based on its data-id and change its state
+  if (e.target === statusBtn) {
+    const row = statusBtn.closest("tr");
+    const rowID = row.dataset.id;
+
+    const bookObject = GetRelavantBook(rowID);
+    bookObject.read = !bookObject.read;
+
+    statusBtn.textContent = `${bookObject.read ? "Read" : " Not read"}`;
+    statusBtn.classList.toggle("read");
+  }
+});
+/*======================================================*/
+
 function Book(title, author, pages, cover, read) {
   this.id = crypto.randomUUID();
   this.title = title;
@@ -69,14 +99,13 @@ function addBookToLibrary(title, author, pages, cover, read) {
   insertIntoDom(myLibrary);
 }
 
+// Function that retrieves and displays data from myLibrary
 function insertIntoDom(library) {
   bookShelf.textContent = "";
   library.forEach((book) => {
-    const { title, author, pages, cover, read } = book;
-    console.log(title, author, pages, cover, read);
-
+    const { id, title, author, pages, cover, read } = book;
     const bookRowHTML = `
-      <tr>
+      <tr data-id="${id}">
           <td>${title}</td>
           <td>${author}</td>
           <td>${pages}</td>
@@ -99,7 +128,6 @@ function clearInputFields() {
 }
 
 //Function checks if there are no books,
-
 function isLibraryEmpty() {
   if (myLibrary.length !== 0) return;
 
@@ -117,3 +145,11 @@ function isLibraryEmpty() {
   bookShelf.insertAdjacentHTML("beforeend", html);
 }
 isLibraryEmpty();
+
+function GetRelavantBook(rowID) {
+  return myLibrary.filter((book) => book.id === rowID)[0];
+}
+
+//! 1. Implement read button state change
+//! 2. Implement form validation
+//! 3. Implement book deletion feature
