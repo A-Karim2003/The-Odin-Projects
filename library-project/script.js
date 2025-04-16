@@ -150,6 +150,6 @@ function GetRelavantBook(rowID) {
   return myLibrary.filter((book) => book.id === rowID)[0];
 }
 
-//! 1. Implement read button state change
-//! 2. Implement form validation
+//! 1. Implement read button state change ✅
+//! 2. Implement form validation ✅
 //! 3. Implement book deletion feature
