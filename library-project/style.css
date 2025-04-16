@@ -110,7 +110,8 @@ main {
   background-color: rgba(100, 0, 255, 0.1);
 }
 
-.book-table .toggle-read-btn {
+.book-table .toggle-read-btn,
+#delete {
   padding: 0.5rem 0rem;
   width: 100px;
   border-radius: 4px;
@@ -232,4 +233,14 @@ form .add-book-btn:active {
 .empty-alert p {
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.7);
+}
+
+#delete {
+  width: 50px;
+  color: purple;
+}
+
+#delete:hover {
+  width: 50px;
+  color: red;
 }

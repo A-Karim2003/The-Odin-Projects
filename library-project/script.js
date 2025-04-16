@@ -7,7 +7,7 @@ const addBookBtn = document.getElementById("add-book-btn");
 const form = document.querySelector("form");
 const formInputsEl = document.querySelectorAll(".form-elements");
 
-const myLibrary = [];
+let myLibrary = [];
 /*======================================================*/
 //? Add functionality for handling modal
 document.body.addEventListener("click", (e) => {
@@ -52,34 +52,38 @@ form.addEventListener("submit", (e) => {
     data["read-status"]
   );
 
+  console.log(myLibrary);
+
   modal.classList.remove("active");
 });
 
 /*======================================================*/
-//? Add functionality for changing read state
-/* Psuedo:
-1. User clicks button,
-2. change button state from the book library:
-    1. Get the ID of the clicked button's row✅
-    2. filter book library to target the object based on ID✅
-    3. change the read status. (read = !read)✅
-3. Find a way to update the DOM😁
-*/
+//? Add functionality for changing read state and deleting row
 
 bookShelf.addEventListener("click", (e) => {
   const statusBtn = e.target.closest(".toggle-read-btn");
-  if (!statusBtn) return;
+  const deleteBtn = e.target.closest("#delete");
+  if (!statusBtn && !deleteBtn) return;
 
   //? target row based on its data-id and change its state
   if (e.target === statusBtn) {
-    const row = statusBtn.closest("tr");
-    const rowID = row.dataset.id;
-
     const bookObject = GetRelavantBook(rowID);
     bookObject.read = !bookObject.read;
 
     statusBtn.textContent = `${bookObject.read ? "Read" : " Not read"}`;
     statusBtn.classList.toggle("read");
+  }
+
+  //? Remove book from DOM and library object
+  if (e.target === deleteBtn) {
+    const bookObject = GetRelavantBook(deleteBtn);
+    const bookRow = deleteBtn.closest("tr");
+    const updatedLibrary = myLibrary.filter(
+      (book) => book.id !== bookObject.id
+    );
+
+    myLibrary = updatedLibrary;
+    bookRow.remove();
   }
 });
 /*======================================================*/
@@ -115,6 +119,11 @@ function insertIntoDom(library) {
             ${read ? "Read" : "Not read"}
             </button>
           </td>
+          <td>
+            <button id="delete">
+              <i class="fas fa-delete-left"></i>
+            </button>
+          </td>
       </tr>
     `;
     bookShelf.insertAdjacentHTML("beforeend", bookRowHTML);
@@ -146,7 +155,9 @@ function isLibraryEmpty() {
 }
 isLibraryEmpty();
 
-function GetRelavantBook(rowID) {
+function GetRelavantBook(statusBtn) {
+  const row = statusBtn.closest("tr");
+  const rowID = row.dataset.id;
   return myLibrary.filter((book) => book.id === rowID)[0];
 }
 
