@@ -52,8 +52,6 @@ form.addEventListener("submit", (e) => {
     data["read-status"]
   );
 
-  console.log(myLibrary);
-
   modal.classList.remove("active");
 });
 
@@ -67,7 +65,7 @@ bookShelf.addEventListener("click", (e) => {
 
   //? target row based on its data-id and change its state
   if (e.target === statusBtn) {
-    const bookObject = GetRelavantBook(rowID);
+    const bookObject = GetRelavantBook(statusBtn);
     bookObject.read = !bookObject.read;
 
     statusBtn.textContent = `${bookObject.read ? "Read" : " Not read"}`;
@@ -160,7 +158,3 @@ function GetRelavantBook(statusBtn) {
   const rowID = row.dataset.id;
   return myLibrary.filter((book) => book.id === rowID)[0];
 }
-
-//! 1. Implement read button state change ✅
-//! 2. Implement form validation ✅
-//! 3. Implement book deletion feature
