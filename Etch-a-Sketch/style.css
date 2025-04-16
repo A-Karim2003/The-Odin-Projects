@@ -191,6 +191,12 @@ input[type="range"]::-moz-range-thumb {
   :root {
     --max-width: 1000px;
   }
+
+  .container {
+    max-height: 80vh;
+    height: 100%;
+    aspect-ratio: unset;
+  }
 }
 
 @media (max-height: 1280px) {
